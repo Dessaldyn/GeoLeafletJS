@@ -1,146 +1,18 @@
-/* Menggunakan font Inter yang bersih dan modern (opsional, tapi disarankan) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-:root {
-    --primary-color: #007bff; /* Biru cerah untuk tombol */
-    --background-blur: rgba(255, 255, 255, 0.95); /* Latar belakang form */
-    --shadow-color: rgba(0, 0, 0, 0.2);
-}
-
-* {
-    box-sizing: border-box;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body scrollbars */
     font-family: 'Inter', sans-serif;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; 
-    
-    /* Perubahan Utama: Menggunakan Grid Layout */
-    display: grid;
-    /* 70% untuk Peta, 30% untuk Login Form */
-    grid-template-columns: 70vw 30vw; 
-    height: 100vh; /* Memastikan body mengisi seluruh tinggi viewport */
-}
-
-/* --- MAP STYLES (70% Lebar Layar) --- */
+/*
+ * Style for the map container (#map)
+ * This is crucial: it needs a defined height to display the map tiles.
+ */
 #map {
-    /* Menghapus posisi absolute */
-    height: 100%; /* Mengisi tinggi penuh 100vh */
-    width: 100%; /* Mengisi 70% grid kolom */
-    /* Z-index 10 diperlukan untuk memastikan pop-up leaflet muncul di atas login area jika tumpang tindih tipis */
-    z-index: 10; 
-}
-
-/* --- LOGIN CONTAINER STYLES (30% Lebar Layar, Diposisikan di Tengah Vertikal) --- */
-.login-container {
-    /* Menghapus posisi absolute dan properti top/right/left/transform */
-    height: 100%; /* Mengisi 100% tinggi */
-    width: 100%; /* Mengisi 30% grid kolom */
-    padding: 40px 30px; /* Padding untuk jarak dari tepi */
-    z-index: 11; /* Di atas peta */
-    
-    /* Styling Card/Box */
-    background: #ffffff; /* Latar belakang putih solid untuk kolom login */
-    
-    /* Menata Form di Tengah Vertikal dalam kolom 30% */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Memusatkan secara vertikal */
-    align-items: center; /* Memusatkan konten di tengah secara horizontal */
-    
-    box-shadow: -5px 0 20px var(--shadow-color); /* Shadow di sisi kiri kolom untuk pemisah visual */
-}
-
-.login-container h2 {
-    /* max-width untuk memastikan konten tidak melebihi lebar form */
-    max-width: 300px; 
-    width: 100%;
-    margin-top: 0;
-    color: #333;
-    font-weight: 700;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group {
-    /* max-width untuk memastikan konten tidak melebihi lebar form */
-    max-width: 300px;
-    width: 100%;
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #555;
-}
-
-.form-group input[type="text"],
-.form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-group input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-/* --- BUTTON STYLES --- */
-#submit {
-    /* max-width untuk memastikan konten tidak melebihi lebar form */
-    max-width: 300px; 
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    margin-top: 10px;
-}
-
-#submit:hover {
-    background-color: #0056b3; 
-}
-
-#submit:active {
-    transform: scale(0.98); 
-}
-
-/* Media Query untuk Mobile: Ubah kembali ke layout vertikal penuh */
-@media (max-width: 768px) {
-    body {
-        /* Susun kolom menjadi baris vertikal */
-        grid-template-columns: 1fr; /* Satu kolom penuh */
-        grid-template-rows: 60vh 40vh; /* Peta 60% tinggi, Login 40% tinggi */
-        height: auto;
-    }
-    
-    #map {
-        height: 100%; /* Mengisi 60vh */
-        grid-row: 1;
-    }
-    
-    .login-container {
-        /* Mengisi 40vh, memusatkan konten */
-        height: 100%; 
-        padding: 20px;
-        box-shadow: 0 -5px 20px var(--shadow-color); /* Shadow di bagian atas form */
-        grid-row: 2;
-    }
+    height: 100vh; /* Make the map fill the entire vertical viewport height */
+    width: 100%; /* Make the map fill the entire width */
+    /* Add a subtle shadow for a better visual look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
