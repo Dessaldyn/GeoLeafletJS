@@ -74,8 +74,24 @@ var circle = L.circle([-6.875237604298394, 107.57530865911491], {
 circle.bindPopup("Daerah Kampus Sarijadi");
 
 var polygon = L.polygon([
-    [-6.874364165192638, 107.57563052420554],
-    [-6.871616017048443, 107.5738924527162],
-    [-6.872979441395755, 107.57601676225364]
+    [-6.921602129975671, 107.607854604615],
+    [-6.920587654954713, 107.60965570803566],
+    [-6.900475583917257, 107.62133222128729],
+    [-6.859978818161022, 107.59208991197777],
+    [-6.8729392879367195, 107.54272334648249],
+    [-6.887341301710596, 107.55505323282765],
+    [-6.9146871486949, 107.5945495068129]
+
 ]).addTo(map);
 polygon.bindPopup("Kampus Kampus");
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('click', onMapClick);
